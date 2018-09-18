@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- definition of simple elements -->
+	<xs:element name="HEADLINE" type="xs:string" />
+	<xs:element name="BYLINE" type="xs:string" />
+	<xs:element name="LEAD" type="xs:string" />
+	<xs:element name="BODY" type="xs:string" />
+	<xs:element name="NOTES" type="xs:string" />
+	
+
+	<!-- definition of attributes -->
+	<xs:attribute name="AUTHOR" type="xs:string" />
+	<xs:attribute name="EDITOR" type="xs:string" />
+	<xs:attribute name="DATE" type="xs:date" />
+	<xs:attribute name="EDITION" type="xs:string" />
+
+	<!-- definition of complex elements -->
+	<xs:element name="ARTICLE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HEADLINE" />
+				<xs:element ref="BYLINE" />
+				<xs:element ref="LEAD" />
+				<xs:element ref="BODY" />
+				<xs:element ref="NOTES" />
+			</xs:sequence>
+			<xs:attribute ref="AUTHOR" use="required" />
+			<xs:attribute ref="EDITOR" use="optional" />
+			<xs:attribute ref="DATE" use="optional" />
+			<xs:attribute ref="EDITION" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="NEWSPAPER">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ARTICLE" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TVSCHEDULE NAME="201635844임효진"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="tvschedule.xsd">
+	<CHANNEL CHAN="20163844번">
+		<BANNER>광고입니다.</BANNER>
+		<DAY>
+			<DATE>2018-09-13</DATE>
+			<HOLLYDAY>토요일 결방</HOLLYDAY>
+			<PROGRAMSLOT VTR="녹화방송">
+				<TIME>14:00:00</TIME>
+				<TITLE RATING="4.0" LANGUAGE="한국어">방송스케쥴예제</TITLE>
+				<DESCRIPTION>dtd를 xml schema로 바꾸자</DESCRIPTION>
+			</PROGRAMSLOT>
+		</DAY>
+	</CHANNEL>
+</TVSCHEDULE>

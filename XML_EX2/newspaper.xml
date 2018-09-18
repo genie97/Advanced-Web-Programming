@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NEWSPAPER
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="newspaper.xsd">
+	<ARTICLE AUTHOR="임효진" EDITOR="임효진" DATE="2018-09-15"
+		EDITION="1판">
+		<HEADLINE>헤드라인</HEADLINE>
+		<BYLINE>바이라인</BYLINE>
+		<LEAD>리드</LEAD>
+		<BODY>바디</BODY>
+		<NOTES>비고란</NOTES>
+	</ARTICLE>
+</NEWSPAPER>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- definition of simple elements -->
+	<xs:element name="BANNER" type="xs:string" />
+	<xs:element name="DATE" type="xs:date" />
+	<xs:element name="HOLLYDAY" type="xs:string" />
+	<xs:element name="TIME" type="xs:time" />
+	<xs:element name="DESCRIPTION" type="xs:string" /> <!-- ?있음 -->
+
+	<!-- definition of attributes -->
+	<xs:attribute name="NAME" type="xs:string" />
+	<xs:attribute name="CHAN" type="xs:string" />
+	<xs:attribute name="VTR" type="xs:string" />
+	<xs:attribute name="RATING" type="xs:string" />
+	<xs:attribute name="LANGUAGE" type="xs:string" />
+
+
+	<!-- definition of complex elements -->
+	<xs:element name="TITLE">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute ref="RATING" />
+					<xs:attribute ref="LANGUAGE" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="PROGRAMSLOT">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TIME" />
+				<xs:element ref="TITLE" />
+				<xs:element ref="DESCRIPTION" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute ref="VTR" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="DAY">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DATE" />
+				<xs:choice maxOccurs="unbounded">
+					<xs:element ref="HOLLYDAY" />
+					<xs:element ref="PROGRAMSLOT" maxOccurs="unbounded" />
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="CHANNEL">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="BANNER" />
+				<xs:element ref="DAY" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute ref="CHAN" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="TVSCHEDULE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CHANNEL" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute ref="NAME" use="required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
