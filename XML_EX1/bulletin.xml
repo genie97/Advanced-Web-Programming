@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE board SYSTEM "bulletin.dtd">
+<board>
+	<name>질문 게시판</name>
+
+	<article>
+		<title>고급웹프로그래밍</title>
+		<message>수업 시간이 언제에요?</message>
+		<writerID>GENIE</writerID>
+		<writerName>임효진</writerName>
+		<reply>
+			<message>수요일/목요일 3시에요!</message>
+			<writerID>teacher</writerID>
+			<writerName>교수님</writerName>
+		</reply>
+
+	</article>
+</board>
