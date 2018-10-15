@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("img").mouseover(function() {
+			$(this).animate({
+				height : "150",
+				width : "150"
+			});
+		});
+		$("img").mouseout(function() {
+			$(this).animate({
+				height : "100",
+				width : "100"
+			});
+		});
+		$("#ie").click(function() {
+			$("#name").text("Internet Explorer");
+		});
+		$("#ch").click(function() {
+			$("#name").text("Chrome");
+		});
+		$("#sa").click(function() {
+			$("#name").text("Safari");
+		});
+		$("#ff").click(function() {
+			$("#name").text("Firefoxs");
+		});
+	});
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td><h3 id="title">My favorite web browser: </h3></td>
+			<td><h3 id="name"></h3></td>
+		</tr>
+	</table>
+
+	<div>
+		<img id="ie" src="IE.png" width="100" height="100"> <img id="ch"
+			src="chrome.png" width="100" height="100"> <img id="sa"
+			src="safari.png" width="100" height="100"> <img id="ff"
+			src="firefox.png" width="100" height="100">
+	</div>
+</body>
+</html>
