@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>AJAX EX5-2</title>
+
+<style>
+table, th, td {
+	border: 2px solid black;
+}
+
+th, td {
+	padding: 5px;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	function loadXMLDoc() {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var xmlDoc = this.responseXML;
+				var table = "";
+				var search_data = $("#NAME").val();
+				var data = xmlDoc.getElementsByTagName("CD");
+
+				for (var i = 0; i < data.length; i++) {
+					if (data[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue == search_data) {
+						table += "<table><tr><th>TITLE</th><td>"
+								+ data[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><th>ARTIST</th><td>"
+								+ data[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><th>COUNTRY</th><td>"
+								+ data[i].getElementsByTagName("COUNTRY")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><th>COMPANY</th><td>"
+								+ data[i].getElementsByTagName("COMPANY")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><th>PRICE</th><td>"
+								+ data[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue
+								+ "</td></tr>"
+								+ "<tr><th>YEAR</th><td>"
+								+ data[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue
+								+ "</td></tr></table>";
+						break;
+					}
+				}
+				if (table == "")
+					document.getElementById("list").innerHTML = "<p>CD Information: none</p>";
+				else
+					document.getElementById("list").innerHTML = "<p>CD Information: </p>"
+							+ table;
+			}
+		};
+		xmlhttp.open("GET", "cd_catalog.xml", true);
+		xmlhttp.send();
+	}
+</script>
+</head>
+<body>
+	<h2>Enter Artist Name:</h2>
+	<input type="text" id="NAME">
+	<button type="button" onclick="loadXMLDoc()">Search</button>
+	<div id="list">
+		<p>CD Information:</p>
+	</div>
+</body>
+</html>
