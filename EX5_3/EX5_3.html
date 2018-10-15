@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>JSON EX5_3</title>
+<style>
+table, th, td {
+	border: 2px solid black;
+}
+
+th, td {
+	padding: 5px;
+}
+
+div {
+    margin-top: 20px;
+}
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	function loadXMLDoc() {
+		var xmlhttp = new XMLHttpRequest();
+		var url = "cd_catalog.json";
+		
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var obj = JSON.parse(xmlhttp.responseText);
+				var select_data = $("#category option:checked").val();
+				var table = "<table><tr><th>" + select_data + "</th></tr>";
+				
+				for (var i = 0; i < obj.CATALOG.CD.length; i++) {
+					if ("TITLE" == select_data) {
+						table += "<tr><td>" + obj.CATALOG.CD[i].TITLE
+								+ "</td></tr>";
+					}
+					if ("ARTIST" == select_data) {
+						table += "<tr><td>" + obj.CATALOG.CD[i].ARTIST
+								+ "</td></tr>";
+					}
+					if ("COUNTRY" == select_data) {
+						table += "<tr><td>" + obj.CATALOG.CD[i].COUNTRY
+								+ "</td></tr>";
+					}
+					if ("COMPANY" == select_data) {
+						table += "<tr><td>" + obj.CATALOG.CD[i].COMPANY
+								+ "</td></tr>";
+					}
+					if ("PRICE" == select_data) {
+						table += "<tr><td>" + obj.CATALOG.CD[i].PRICE
+								+ "</td></tr>";
+					}
+					if ("YEAR" == select_data) {
+						table += "<tr><td>" + obj.CATALOG.CD[i].YEAR
+								+ "</td></tr>";
+					}
+				}
+				document.getElementById("list").innerHTML = table + "</table>";
+			}
+		};
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+</script>
+</head>
+<body>
+	<h2>Select a Field to Show:</h2>
+	<select id="category">
+		<option>TITLE</option>
+		<option>ARTIST</option>
+		<option>COUNTRY</option>
+		<option>COMPANY</option>
+		<option>PRICE</option>
+		<option>YEAR</option>
+	</select>
+	<button onclick="loadXMLDoc()">Show Values</button>
+	<div id="list"></div>
+</body>
+</html>
