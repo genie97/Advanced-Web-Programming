@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(function() {
+		$("#btn1").click(function() {
+
+			$("#hd1").css("color", $("#color").val());
+		});
+		$("#btn2").click(function() {
+			$("#hd2").css("color", $("#color").val());
+		});
+		$("#btn3").click(function() {
+			$("#hd3").css("color", $("#color").val());
+		});
+	});
+</script>
+</head>
+<body>
+	<h2 id="hd1" style="">Header1</h2>
+	<h2 id="hd2" style="">Header2</h2>
+	<h2 id="hd3" style="">Header3</h2>
+	<p>
+		Choose the header color: <input id="color" type="color"
+			value="#000000" />
+	</p>
+	<div>
+		<button id="btn1">change 1</button>
+		<button id="btn2">change 2</button>
+		<button id="btn3">change 3</button>
+	</div>
+</body>
+</html>
