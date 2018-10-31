@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+	<p id="result"></p>
+	<script>
+		function print(title, artist, price, year) {
+			var tableValue = '<table  width="50%" border="1" align="left" cellpadding="5" cellspacing="5" style="border: 1px solid">';
+			tableValue += '<tr><th>TITLE</th><th>ARTIST</th><th>PRICE</th><th>YEAR</th></tr>';
+			for (i = 0; i < title.length; i++) {
+				if (parseInt(year[i].childNodes[0].nodeValue) <= 1995) {
+					price[i].childNodes[0].nodeValue = parseFloat(price[i].childNodes[0].nodeValue) * 0.9;
+					tableValue += '<tr><td>' + title[i].childNodes[0].nodeValue
+							+ '</td><td>';
+					tableValue += artist[i].childNodes[0].nodeValue
+							+ '</td><td>';
+					tableValue += price[i].childNodes[0].nodeValue
+							+ '</td><td>';
+					tableValue += year[i].childNodes[0].nodeValue
+							+ '</td></tr>';
+				}
+			}
+			tableValue += '</table>';
+
+			document.getElementById('result').innerHTML = tableValue;
+		}
+	</script>
+
+	<script>
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4 && xhttp.status == 200) {
+				var xmlDoc = xhttp.responseXML;
+
+				print(xmlDoc.getElementsByTagName('TITLE'), xmlDoc
+						.getElementsByTagName('ARTIST'), xmlDoc
+						.getElementsByTagName('PRICE'), xmlDoc
+						.getElementsByTagName('YEAR'))
+			}
+		};
+		xhttp.open("GET", "cd_catalog.xml", true);
+		xhttp.send();
+	</script>
+</head>
+</body>
+</html>

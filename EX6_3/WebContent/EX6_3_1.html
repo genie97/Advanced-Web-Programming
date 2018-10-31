@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+	<p id="result"></p>
+	<script>
+		function addNode(xmlDoc) {
+			elem = xmlDoc.createElement("book");
+			elem.setAttribute("category", "novel");
+
+			title = xmlDoc.createElement("title");
+			title.setAttribute("lang", "en");
+			text = xmlDoc.createTextNode("Little Prince");
+			title.appendChild(text);
+			elem.appendChild(title);
+
+			author = xmlDoc.createElement("author");
+			text = xmlDoc.createTextNode("Antoine Marie Roger De Saint Exupery");
+			author.appendChild(text);
+			elem.appendChild(author);
+
+			year = xmlDoc.createElement("year");
+			text = xmlDoc.createTextNode("1943");
+			year.appendChild(text);
+			elem.appendChild(year);
+
+			price = xmlDoc.createElement("price");
+			text = xmlDoc.createTextNode("6.5");
+			price.appendChild(text);
+			elem.appendChild(price);
+
+			x = xmlDoc.getElementsByTagName("bookstore")[0];
+			x.appendChild(elem);
+
+			elem = xmlDoc.createElement("book");
+			elem.setAttribute("category", "novel");
+
+			title = xmlDoc.createElement("title");
+			title.setAttribute("lang", "en");
+			text = xmlDoc.createTextNode("Four great tragedies");
+			title.appendChild(text);
+			elem.appendChild(title);
+
+			author = xmlDoc.createElement("author");
+			text = xmlDoc.createTextNode("William Shakespeare");
+			author.appendChild(text);
+			elem.appendChild(author);
+
+			year = xmlDoc.createElement("year");
+			text = xmlDoc.createTextNode("1600's");
+			year.appendChild(text);
+			elem.appendChild(year);
+
+			price = xmlDoc.createElement("price");
+			text = xmlDoc.createTextNode("18.0");
+			price.appendChild(text);
+			elem.appendChild(price);
+
+			x = xmlDoc.getElementsByTagName("bookstore")[0];
+			x.appendChild(elem);
+
+			elem = xmlDoc.createElement("book");
+			elem.setAttribute("category", "children's story");
+
+			title = xmlDoc.createElement("title");
+			title.setAttribute("lang", "en");
+			text = xmlDoc.createTextNode("Cendrillon");
+			title.appendChild(text);
+			elem.appendChild(title);
+
+			author = xmlDoc.createElement("author");
+			text = xmlDoc.createTextNode("Charles Perrault");
+			author.appendChild(text);
+			elem.appendChild(author);
+
+			year = xmlDoc.createElement("year");
+			text = xmlDoc.createTextNode("1697");
+			year.appendChild(text);
+			elem.appendChild(year);
+
+			price = xmlDoc.createElement("price");
+			text = xmlDoc.createTextNode("10.0");
+			price.appendChild(text);
+			elem.appendChild(price);
+
+			x = xmlDoc.getElementsByTagName("bookstore")[0];
+			x.appendChild(elem);
+		}
+
+		function print(book) {
+			var tableValue = '<table  width="50%" border="1" align="left" cellpadding="5" cellspacing="5" style="border: 1px solid">';
+			tableValue += '<tr><th>TITLE</th><th>AUTHOR</th><th>YEAR</th></tr>';
+			for (i = 4; i < book.length; i++) {
+				var title = "";
+				var author = "";
+				var year = "";
+
+				for (j = 0; j < book[i].childNodes.length; j++) {
+					if (book[i].childNodes[j].nodeName == "title")
+						title += book[i].childNodes[j].firstChild.nodeValue
+								+ " ";
+
+					else if (book[i].childNodes[j].nodeName == "author")
+						author += book[i].childNodes[j].firstChild.nodeValue
+								+ " ";
+
+					else if (book[i].childNodes[j].nodeName == "year")
+						year += book[i].childNodes[j].firstChild.nodeValue
+								+ " ";
+				}
+				tableValue += '<tr><td>' + title + '</td><td>';
+				tableValue += author + '</td><td>';
+				tableValue += year + '</td></tr>';
+			}
+			tableValue += '</table>';
+
+			document.getElementById('result').innerHTML = tableValue;
+		}
+	</script>
+	
+	<script>
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4 && xhttp.status == 200) {
+				var xmlDoc = xhttp.responseXML;
+				addNode(xmlDoc);
+				print(xmlDoc.getElementsByTagName('book'));
+			}
+		};
+		xhttp.open("GET", "books.xml", true);
+		xhttp.send();
+	</script>
+</head>
+
+</body>
+</html>
