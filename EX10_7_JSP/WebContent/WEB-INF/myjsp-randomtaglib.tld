@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd" >
+<taglib>
+	<tlib-version>00</tlib-version>
+	<jsp-version>00</jsp-version>
+	<short-name>short-name</short-name>
+	<!-- Random number TLD -->
+	<tag>
+		<name>random</name>
+		<tag-class>myPackage.RandomTag</tag-class>
+		<body-content>empty</body-content>
+		<description>Prints a random number (double) between 0 and 1
+		</description>
+	</tag>
+	
+	<!-- Random integer TLD -->
+	<tag>
+		<name>randomInteger</name>
+		<tag-class>myPackage.RandomIntegerTag</tag-class>
+		<body-content>empty</body-content>
+		<description>Prints a random integer between 0 and limit
+		</description>
+		<attribute>
+			<name>limit</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+</taglib>
