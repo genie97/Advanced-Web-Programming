@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="car1" class="myPackage.CarFactory"
+		factory-method="makeCar">
+		<constructor-arg value="Sonata" />
+		<constructor-arg value="2010" />
+		<constructor-arg value="Hyundai" />
+	</bean>
+	<bean id="car2" class="myPackage.CarFactory"
+		factory-method="makeCar">
+		<constructor-arg value="K3" />
+		<constructor-arg value="2019" />
+	</bean>
+	<bean id="car3" class="myPackage.CarFactory"
+		factory-method="makeCar">
+		<constructor-arg value="X5" />
+		<constructor-arg value="2019" />
+		<constructor-arg value="BMW" />
+	</bean>
+</beans>

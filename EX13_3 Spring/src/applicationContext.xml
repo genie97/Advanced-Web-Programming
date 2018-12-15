@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="car1" class="myPackage.CarFactory"
+		factory-method="makeCar">
+		<constructor-arg value="Sonata" />
+		<constructor-arg value="2010" />
+		<constructor-arg value="Hyundai" />
+	</bean>
+	<bean id="car2" class="myPackage.CarFactory"
+		factory-method="makeCar">
+		<constructor-arg value="K3" />
+		<constructor-arg value="2019" />
+	</bean>
+	<bean id="car3" class="myPackage.CarFactory"
+		factory-method="makeCar">
+		<constructor-arg value="X5" />
+		<constructor-arg value="2019" />
+		<constructor-arg value="BMW" />
+	</bean>
+	<bean class="myPackage.Employee" id="employee1">
+		<constructor-arg value="1234" />
+		<constructor-arg value="genie" />
+		<constructor-arg>
+			<list>
+				<ref bean="car1" />
+				<ref bean="car2" />
+				<ref bean="car3" />
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean class="myPackage.Employee" id="employee2">
+		<constructor-arg value="5000" />
+		<constructor-arg value="genny" />
+		<constructor-arg>
+			<list>
+				<ref bean="car2" />
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean class="myPackage.Employee" id="employee3">
+		<property value="6729" name="id" />
+		<property value="july" name="name" />
+		<property name="cars">
+			<list>
+				<ref bean="car1" />
+				<ref bean="car3" />
+			</list>
+		</property>
+
+	</bean>
+	<bean class="myPackage.Employee" id="employee4">
+		<property value="2053" name="id" />
+		<property value="jason" name="name" />
+		<property name="cars">
+			<list>
+				<ref bean="car2" />
+			</list>
+		</property>
+	</bean>
+</beans>
